@@ -64,4 +64,16 @@ public class IntellectMatr {
         else
             this.summ += 1 * subMinor[0][0];
     }//getReduction
+    public int[] negativeCntVector(){
+        //возращает вектор, i-ый элемент которого равен количеству отрицательных
+        //элементов в i-ой строке матрицы (без параметров)
+        int X[] = new int[matr.length];//создаем массив Х
+        //состоящий из matr.length элементов типа float
+        for (int i = 0; i<matr.length; i++){
+            X[i] = 0;//начальное значение счетчика отрицательных элементов
+            for (int j=0; j<matr[0].length; j++)
+                if (matr[i][j] < 0) X[i]++;//инкрементируем счетчик
+        }//for i
+        return X;//возвращаем ссылку на массив X
+    }// negativeCntVector
 }
