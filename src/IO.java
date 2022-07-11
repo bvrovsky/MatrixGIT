@@ -65,3 +65,33 @@ public class IO {
                             "Missing lines in file %s ", fileName));
             }//try 2
             //здесь порядок следования обработчиков catch роли не играет
+            catch (MyException e){
+                //обработчик исключения для try 2 (неправильная структура файла)
+                System.out.println(e); return null;}
+            catch (NumberFormatException e){
+                //обработчик исключения для try 2 (ошибка преобразования данных)
+                System.out.printf("In line %d of matrix from file %s", i, fileName);
+                System.out.println(
+                        " Invalid character sequence found");
+                return null;}
+        }//try 1
+        //порядок следования блоков catch для try 1 определяется тем, что
+        //класс FileNotFoundException является подклассом IOException
+        catch (FileNotFoundException e){
+            //файл не найден - обработчик для try 1
+            System.out.printf("File %s not found\n", fileName);
+            return null;}
+        catch (IOException e){
+            //ошибка ввода данных - обработчик для try 1
+            System.out.printf("Error when entering data from a file %s\n",
+                    fileName);
+            return null;}
+        finally{ if (inp != null) inp.close();//закрываем поток
+            //При закрытии может возникнуть исключение IOException,
+            //которое в этой части программы не перехватывается и не
+            //обрабатывается, поэтому в заголовке метода inpMatr
+            //должно присутствовать предложение throws IOException
+        }//finally
+        return matr;
+    }
+}//class IO
