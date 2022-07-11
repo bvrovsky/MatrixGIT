@@ -38,4 +38,30 @@ public class IntellectMatr {
         }
         return matr;
     }
+
+    public float getValue() {
+        getReduction(matr);
+        return this.summ;
+
+    }//getValue
+    //Выисление значения определителя матрицы
+    private void getReduction(float [][] subMinor) {
+        if (subMinor.length > 1){
+            float [][] tmpMinor = new float[subMinor.length - 1][subMinor[0].length - 1];//создаем массив
+            for (int c = 0; c < subMinor[0].length; c++) {
+                for (int i = 1; i < subMinor.length; i++) {
+                    for (int j = 0; j < subMinor[0].length; j++) {
+                        if (j < c)
+                            tmpMinor[i - 1][j] = subMinor[i][j];
+                        else if (j > c)
+                            tmpMinor[i - 1][j - 1] = subMinor[i][j];
+                    }
+                }
+                float paramForSub = (float) Math.pow(-1,c+2)*subMinor[0][c]*1;
+                getReduction(tmpMinor);
+            }
+        }
+        else
+            this.summ += 1 * subMinor[0][0];
+    }//getReduction
 }
