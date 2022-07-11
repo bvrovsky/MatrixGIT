@@ -26,4 +26,16 @@ public class IntellectMatr {
         }
         return sum;
     }//sumDiagonal
+
+    //транспонирование матрицы
+    public float[][] TranspMatr() {
+        for (int i = 0; i < matr.length; i++) {
+            for (int j = i + 1; j < matr.length; j++) {
+                float temp = (float) matr[i][j];
+                matr[i][j] = matr[j][i];
+                matr[j][i] = temp;
+            }
+        }
+        return matr;
+    }
 }
