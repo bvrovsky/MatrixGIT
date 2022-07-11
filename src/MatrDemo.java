@@ -13,4 +13,12 @@ public class MatrDemo {
             System.out.printf("%d ", X[i]);
         System.out.println();
     }
+
+    public static void putMatr(float[][] Y) {//вывод матрицы в окно терминала
+        for (int i = 0; i < Y.length; i++) {
+            for (int j = 0; j < Y[0].length; j++)
+                System.out.printf("% 7.2f", Y[i][j]);
+            System.out.println();
+        }
+    }
 }
