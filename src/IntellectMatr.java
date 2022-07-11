@@ -17,4 +17,13 @@ public class IntellectMatr {
         }//for i
     }//putMatr
     //вернуть сумму элементов главной диагонали матрицы
+    public float sumDiagonal(){
+        if ((matr == null) || (matr[0] == null)) return -1;//если матрица пуста
+        int number = 0;
+        float sum = 0;
+        for (int i = 0; i<matr.length; i++) {
+            sum += matr[i][i];
+        }
+        return sum;
+    }//sumDiagonal
 }
